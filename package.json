@@ -1,0 +1,21 @@
+{
+  "name": "sistema-de-recursos-humanos-nodejs",
+  "version": "1.0.0",
+  "description": "An Express Workshop RH",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "API",
+    "REST",
+    "EXPRESS",
+    "NODEJS",
+    "API"
+  ],
+  "author": "JOSE SAUL GUERRERO MARTINEZ, MARTIN ZAMORA ORNELAS",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
