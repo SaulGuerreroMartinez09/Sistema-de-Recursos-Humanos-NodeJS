@@ -13,16 +13,17 @@ const index = require('./middleware/index');
 const { eDependencies } = require('mathjs');
 const cors = require ('./middleware/cors');
 
- app.use(cors);
+app.use(cors);
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+
 app.get('/',index);
 app.use("/user", user);
-app.use(auth);
+// app.use(auth);
 app.use("/rh", rh);
-app.use(notFound);
+// app.use(notFound);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running...`);

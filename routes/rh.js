@@ -88,5 +88,5 @@ recursosH.post("/", async (req, res, next) => {
     }
   });
   
-module.exports = recursosH; 
+module.exports = recursosH; //hasbulla
 
