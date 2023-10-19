@@ -47,7 +47,7 @@ recursosH.post("/", async (req, res, next) => {
     return res.status(400).json({ code: 400, message: "Campos incompletos" });
   });
   
-  recursosH.patch("/:id([0-9]{1,3}", async (req, res, next) => {
+  recursosH.patch("/:id([0-9]{1,3})", async (req, res, next) => {
     if (req.body.nombre) {
       const query = `UPDATE empleados SET nombre='${req.body.nombre}' WHERE id=${req.params.id}`;
       const rows = await db.query(query);
