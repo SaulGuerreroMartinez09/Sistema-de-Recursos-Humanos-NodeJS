@@ -1,4 +1,4 @@
-// // Dependencies
+// // Dependencias
 const bodyParser = require('body-parser');
 const morgan =  require('morgan');
 const express = require('express');
@@ -6,7 +6,7 @@ const app = express();
 // // Routers
 const rh = require('./routes/rh');
 const user = require('./routes/user');
-// middelware
+// Middelware
 const auth = require('./middleware/auth');
 const notFound = require('./middleware/notFound');
 const index = require('./middleware/index');
@@ -21,9 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/',index);
 app.use("/user", user);
-// app.use(auth);
-app.use("/rh", rh);
-// app.use(notFound);
+app.use(auth);
+app.use("/routes", rh);
+app.use(notFound);
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`Server is running...`);
