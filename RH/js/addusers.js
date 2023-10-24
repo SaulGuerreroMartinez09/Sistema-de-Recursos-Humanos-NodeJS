@@ -3,7 +3,7 @@ let headers = {};
 let url = "http://localhost:3000";
 
 function init() {
-  if (localStorage.getItem("token")) {
+  if (!localStorage.getItem("token")) {
     token = localStorage.getItem("token");
     headers = {
       headers: {
