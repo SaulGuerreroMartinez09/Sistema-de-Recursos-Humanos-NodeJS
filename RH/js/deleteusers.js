@@ -1,7 +1,7 @@
 window.onload = init;
 
 function init() {
-  if (localStorage.getItem("token")) {
+  if (!localStorage.getItem("token")) {
     token = localStorage.getItem("token");
     headers = {
       headers: {
@@ -26,7 +26,7 @@ let correo = localStorage.getItem("correo");
 
 function loadDatos() {
   axios
-    .get("http://localhost:3000/RH/email/" + correo, headers)
+    .get("http://localhost:3000/RH/correo/" + correo, headers)
     .then(function (res) {
       // Llenamos los input
       let datos = res.data.message;

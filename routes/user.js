@@ -25,6 +25,7 @@ recursosH.post("/login", async (req, res, next) => {
     const rows = await db.query(query);
 
     if (correo && contraseña){
+        console.log("depuracioooooooooooooon");
         if(rows.length == 1){
             const token = jwt.sign({
                 id: rows[0].id,
