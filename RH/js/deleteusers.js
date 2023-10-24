@@ -26,7 +26,7 @@ let correo = localStorage.getItem("correo");
 
 function loadDatos() {
   axios
-    .get("http://localhost:3000/rh/email/" + correo, headers)
+    .get("http://localhost:3000/RH/email/" + correo, headers)
     .then(function (res) {
       // Llenamos los input
       let datos = res.data.message;
@@ -53,7 +53,7 @@ function loadDatos() {
 
 function eliminar() {
   axios
-    .delete("http://localhost:3000/rh/" + correo, headers)
+    .delete("http://localhost:3000/RH/" + correo, headers)
     .then(function (res) {
       console.log(res);
       alert("Empleado eliminado");
