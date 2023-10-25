@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken');
 const recursosH = express.Router();
 const db = require ('../config/database');
 
-
-
 recursosH.post("/login", async (req, res, next) => {
     const { correo, contraseña } = req.body;
     const query = `SELECT * FROM administradores WHERE correo = '${correo}' AND contraseña = '${contraseña}';`;

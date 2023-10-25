@@ -29,19 +29,22 @@ function insert() {
   let correo = document.getElementById("correo").value;
   let direccion = document.getElementById("direccion").value;
 
-  axios.post(url + "/rh", {
+  axios({
+    method: 'post',
+    url: 'http://localhost:3000/rh',
+    data: {
       nombre: nombre,
-      apellidos: apellido,
+      apellido: apellido,
       telefono: telefono,
       correo: correo,
       direccion: direccion,
-    }, headers)
-    .then(function (res) {
-      console.log(res);
-      alert("Empleado registrado correctamente");
-      window.location.href = "viewusers.html";
+    }
+    }).then(function(res){
+        console.log(res);
+        alert("Registro Exitoso");
+        window.location.href = "login.html";
+    }).catch(function(err){
+        console.log(err);
     })
-    .catch(function (err) {
-      console.log(err);
-    });
+  
 }
