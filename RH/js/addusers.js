@@ -3,7 +3,7 @@ let headers = {};
 let url = "http://localhost:3000";
 
 function init() {
-  if (!localStorage.getItem("token")) {
+  if (localStorage.getItem("token")) {
     token = localStorage.getItem("token");
     headers = {
       headers: {
@@ -12,12 +12,13 @@ function init() {
     };
 
     document.querySelector(".btn-secondary").addEventListener("click", function () {
-      window.location.href = "addusers.html";
+      window.location.href = "login.html";
     });
 
     document.querySelector(".btn-primary").addEventListener("click", insert);
-  } else {
-    window.location.href = "index.html";
+  } 
+  else {
+    window.location.href = "rh.html";
   }
 }
 
@@ -25,11 +26,10 @@ function insert() {
   let nombre = document.getElementById("nombre").value;
   let apellido = document.getElementById("apellido").value;
   let telefono = document.getElementById("telefono").value;
-  let correo = document.getElementById("email").value;
+  let correo = document.getElementById("correo").value;
   let direccion = document.getElementById("direccion").value;
 
-  axios
-    .post("http://localhost:3000/rh", {
+  axios.post(url + "/rh", {
       nombre: nombre,
       apellidos: apellido,
       telefono: telefono,
@@ -39,7 +39,7 @@ function insert() {
     .then(function (res) {
       console.log(res);
       alert("Empleado registrado correctamente");
-      window.location.href = "addusers.html";
+      window.location.href = "viewusers.html";
     })
     .catch(function (err) {
       console.log(err);

@@ -3,21 +3,7 @@ const jwt = require('jsonwebtoken');
 const recursosH = express.Router();
 const db = require ('../config/database');
 
-recursosH.post("/signin", async (req, res, next) => {
-    const { id, nombre, correo, contraseña } = req.body;
 
-    if (id && nombre && correo && contraseña) {
-        let query = "INSERT INTO administradores(nombre, correo, contraseña)";
-        query += ` VALUES ('${id}','${nombre}','${correo}','${contraseña}')`;
-        const rows = await db.query(query);
-
-        if (rows.affectedRows == 1) {
-            return res.status(201).json({ code: 201, message: "usuario registrado correctamente" });
-        }
-        return res.status(500).json({ code: 500, message: "ocurrió un error" });
-    }
-    return res.status(500).json({ code: 500, message: "campos incompletos" });
-});
 
 recursosH.post("/login", async (req, res, next) => {
     const { correo, contraseña } = req.body;
