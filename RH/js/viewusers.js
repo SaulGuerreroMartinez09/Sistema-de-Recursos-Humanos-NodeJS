@@ -104,18 +104,29 @@ function mostrarEmpleados(empleados) {
 
 
 function eliminarEmpleado(empleadoID) {
-
     axios.delete(link + 'rh/' + empleadoID, { headers} )
         .then(function (res) {
-            if(code==200){
-                alert("Empleado borrado")
-            }
-            else{
-                alert("empleado no encontrado!") 
-            }
-        
+            alert("Empleado eliminado con éxito");
+            window.location.href = 'viewusers.html';
         })
         .catch(function (err) {
             console.log("Error al eliminar el empleado:", err);
         });
 }
+
+// function eliminarEmpleado(empleadoID) {
+
+//     axios.delete(link + 'rh/' + empleadoID, { headers} )
+//         .then(function (res) {
+//             if(code==200){
+//                 alert("Empleado borrado")
+//             }
+//             else{
+//                 alert("empleado no encontrado!") 
+//             }
+        
+//         })
+//         .catch(function (err) {
+//             console.log("Error al eliminar el empleado:", err);
+//         });
+// }

@@ -22,7 +22,7 @@ recursosH.post("/", async (req, res, next) => {
   });
   
   recursosH.delete("/:id([0-9]{1,3})", async (req, res, next) => {
-    const query = `DELETE FROM empleados WHERE id=${req.params.id}`;
+    const query = `DELETE FROM empleados WHERE empleado_id=${req.params.id}`;
     const rows = await db.query(query);
   
     if (rows.affectedRows == 1) {
@@ -49,7 +49,7 @@ recursosH.post("/", async (req, res, next) => {
   
   recursosH.patch("/:id([0-9]{1,3})", async (req, res, next) => {
     if (req.body.nombre) {
-      const query = `UPDATE empleados SET nombre='${req.body.nombre}' WHERE id=${req.params.id}`;
+      const query = `UPDATE empleados SET nombre='${req.body.nombre}' WHERE empleado_id=${req.params.id}`;
       const rows = await db.query(query);
   
       if (rows.affectedRows == 1) {
@@ -68,7 +68,7 @@ recursosH.post("/", async (req, res, next) => {
   
   recursosH.get('/:id([0-9]{1,3})', async (req, res, next) => {
     const id = req.params.id;
-    const empleado = await db.query('SELECT * FROM empleados WHERE id=' + id);
+    const empleado = await db.query('SELECT * FROM empleados WHERE empleado_id==' + id);
   
     if (empleado.length > 0) {
       return res.status(201).json({ code: 201, message: empleado });
