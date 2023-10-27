@@ -15,7 +15,7 @@ recursosH.post("/login", async (req, res, next) => {
                 id: rows[0].id,
                 correo: rows[0].correo
             }, "debugkey");
-            return res.status(200).json({ code: 200, message: token });
+            return res.status(201).json({ code: 201, message: token });
         } 
         else {
             return res.status(200).json({ code: 200, message: "Usuario y/o contraseña incorrectos" });

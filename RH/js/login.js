@@ -1,19 +1,17 @@
 window.onload = init;
 
-function init(){
-    if(!localStorage.getItem("token")){
-            document.querySelector('.btn-secondary').addEventListener('click', function(){
-                window.location.href = 'signin.html';
-            });
-            document.querySelector('.btn-primary').addEventListener('click', login)
-    }else{
-        window.location.href = "rh.html"
-    }
+function init() {
+    document.querySelector('.btn-primary').addEventListener('click', login);
 }
 
-function login(){
-    let mail = document.getElementById('input-mail').value;
-    let pass = document.getElementById('input-password').value;
+function login() {
+    const mail = document.getElementById('input-mail').value;
+    const pass = document.getElementById('input-password').value;
+
+    if (!mail || !pass) {
+        alert("Completa ambos campos.");
+        return;
+    }
 
     axios({
         method: 'post',
@@ -22,12 +20,21 @@ function login(){
             correo: mail,
             contraseña: pass
         }
-    }).then(function(res){
-        if(res.data.code === 200){
-            localStorage.setItem("token", res.data.message);
+    }).then(function (res) {
+    const token = res.data.message;
+        if (res.data.code === 201) {
+            localStorage.setItem("token", token);
             window.location.href = "rh.html";
-        }
-    }).catch(function(err){
+    }
+    if (token === "Usuario y/o contraseña incorrectos") {
+        alert("Usuario y/o contraseña incorrectos");
+    } else if (token === "campos incompletos") {
+        alert("Los campos están incompletos");
+         }
+
+
+    }).catch(function (err) {
         console.log(err);
-    })
+        alert("Error al procesar la solicitud.");
+    });
 }

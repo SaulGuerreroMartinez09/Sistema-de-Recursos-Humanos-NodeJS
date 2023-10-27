@@ -1,13 +1,12 @@
-module.exports = (req, res, next)=>{
+module.exports = (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header(
         "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Acept, Autorization"
+        "Origin, X-Requested-With, Content-Type, Accept, Authorization"
     );
-    if(req.method == 'OPTIONS'){
-        res.header("Access-Control-Allowed-Methods", "PUT, POST, PATCH, DELETE, GET");
+    if (req.method === 'OPTIONS') {
+        res.header("Access-Control-Allow-Methods", "PUT, POST, PATCH, DELETE, GET");
         return res.status(200).json({});
     }
     next();
-
 }
