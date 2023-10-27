@@ -114,6 +114,26 @@ function eliminarEmpleado(empleadoID) {
         });
 }
 
+
+
+function buscarEmpleadosPorNombre() {
+    const inputNombre = document.getElementById('search');
+    const nombreBuscado = inputNombre.value.trim().toUpperCase();
+    
+    const emp = empleados;
+    
+    if (nombreBuscado === '') {
+        mostrarEmpleados(emp);
+    } else {
+        const empleadosFiltrados = emp.filter(empleado => empleado.nombre.toUpperCase().includes(nombreBuscado));
+        mostrarEmpleados(empleadosFiltrados);
+    }
+}
+
+const inputNombre = document.getElementById('search');
+inputNombre.addEventListener('input', buscarEmpleadosPorNombre);
+
+
 // function eliminarEmpleado(empleadoID) {
 
 //     axios.delete(link + 'rh/' + empleadoID, { headers} )
