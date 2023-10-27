@@ -28,7 +28,6 @@ function verEmpleados() {
 
             if (empleados != null) {
                 console.log("Hasbulla")
-                // console.log(empleados.message[0].nombre);
             }
         })
         .catch(function (err) {
@@ -69,7 +68,6 @@ function mostrarEmpleados(empleados) {
             const telefono = empleado.telefono;
             const direccion = empleado.direccion;
 
-            // Crea una nueva fila para cada empleado
             const row = document.createElement('tr');
             row.innerHTML = `
                 <td>${empleado_id}</td>
@@ -79,13 +77,16 @@ function mostrarEmpleados(empleados) {
                 <td>${telefono}</td>
                 <td>${direccion}</td>
                 <td>
-                    <button class="btn btn-delete">Eliminar</button>
+                    <button class="btn btn-delete" empId="${empleado_id}">Eliminar</button>
                     <button class="btn btn-edit">Editar</button>
                 </td>
             `;
-
-            // Agrega la fila a la tabla
             tbody.appendChild(row);
+                const btnEliminar = row.querySelector('.btn-delete');
+                btnEliminar.addEventListener('click', () => {
+                const empleadoID = btnEliminar.getAttribute('empId');
+                eliminarEmpleado(empleadoID);
+});
         }
     } else {
         const row = document.createElement('tr');
@@ -98,4 +99,23 @@ function mostrarEmpleados(empleados) {
     const container = document.querySelector('.table-container');
     container.innerHTML = '';
     container.appendChild(table);
+}
+
+
+
+function eliminarEmpleado(empleadoID) {
+
+    axios.delete(link + 'rh/' + empleadoID, { headers} )
+        .then(function (res) {
+            if(code==200){
+                alert("Empleado borrado")
+            }
+            else{
+                alert("empleado no encontrado!") 
+            }
+        
+        })
+        .catch(function (err) {
+            console.log("Error al eliminar el empleado:", err);
+        });
 }
