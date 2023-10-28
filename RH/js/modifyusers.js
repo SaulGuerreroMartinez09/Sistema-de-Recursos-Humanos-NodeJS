@@ -1,61 +1,163 @@
-window.onload = init 
+const link = 'http://localhost:3000/';
+const headers = {
+    'Authorization': 'bearer ' + localStorage.getItem("token")
+};
 
 
-function init(){
-    if(localStorage.getItem("token")){
-        token = localStorage.getItem("token")
-        headers = {
-            headers: {
-                'Authorization': "bearer " + localStorage.getItem("token")
-            }
-        }
-        //cargar los datos del empleado con base en su correo
-        loadDatos()
 
-        document.querySelector('.btn-secondary').addEventListener('click', function(){
-            window.location.href = "rh.html"
-        })
+window.addEventListener("load", function(){
+    let empeladoStringify = localStorage.getItem('empleadoSeleccionado');
+    let empleadoObj = JSON.parse(empeladoStringify);
+    console.log(empeladoStringify);
+    console.log(empleadoObj);
+    
+});
 
-        document.querySelector('.btn-primary').addEventListener('click', update)
-    } else {
-        window.location.href = "viewusers.html"
-    }
-}
+// function mostrarEmpleados(empleados) {
+//     const table = document.createElement('table');
+//     table.classList.add('table');
+//     table.innerHTML = `
+//         <thead>
+//             <tr>
+//                 <th scope="col">#</th>
+//                 <th scope="col">Nombre</th>
+//                 <th scope="col">Apellido</th>
+//                 <th scope="col">Correo Electrónico</th>
+//                 <th scope="col">Teléfono</th>
+//                 <th scope="col">Dirección</th>
+//                 <th scope="col">Acciones</th>
+//             </tr>
+//         </thead>
+//         <tbody>
+//         </tbody>
+//     `;
 
-function loadDatos(){
-    var correo = localStorage.getItem("correo")
-    axios.get("http://localhost:3000/user/viewusers/" + correo, headers).then(function(res){
-        //console.log(res)
-        //llenamos los input
-        var datos = res.data.message
-        document.querySelector('#nombre').value = `${datos[0].nombre}`
-        document.querySelector('#apellido').value = `${datos[0].apellido}`
-        document.querySelector('#email').value = `${datos[0].correo}`
-        document.querySelector('#telefono').value = `${datos[0].telefono}`
-        document.querySelector('#direccion').value = `${datos[0].direccion}`
-    }).catch(function(err){
-        console.log(err)
+//     const tbody = table.querySelector('tbody');
+//     const empleadosData = empleados.message;
+
+//     if (empleadosData.length > 0) {
+//         for (let i = 0; i < empleadosData.length; i++) {
+//             const empleado = empleadosData[i];
+//             const empleado_id = empleado.empleado_id;
+//             const nombre = empleado.nombre;
+//             const apellido = empleado.apellido;
+//             const correo = empleado.correo;
+//             const telefono = empleado.telefono;
+//             const direccion = empleado.direccion;
+
+//             const row = document.createElement('tr');
+//             row.innerHTML = `
+//                 <td>${empleado_id}</td>
+//                 <td>${nombre}</td>
+//                 <td>${apellido}</td>
+//                 <td>${correo}</td>
+//                 <td>${telefono}</td>
+//                 <td>${direccion}</td>
+//                 <td>
+//                     <button class="btn btn-delete" empId="${empleado_id}">Eliminar</button>
+//                     <button class="btn btn-edit" empId="${empleado_id}">Editar</button>
+//                 </td>
+//             `;
+//             tbody.appendChild(row);
+
+            
+//             const btnEditar = row.querySelector('.btn-edit');
+//             btnEditar.addEventListener('click', () => {
+//                 const empleadoID = btnEditar.getAttribute('empId');
+//                 // Obtener el empleado seleccionado de 'empleados'
+//                 const empleadoSeleccionado = empleadosData.find(empleado => empleado.empleado_id === empleadoID);
+                
+//                 // Almacenar los datos del empleado en el almacenamiento local
+//                 localStorage.setItem('empleadoSeleccionado', JSON.stringify(empleadoSeleccionado));
+                
+//                 // Redirigir a "modifyusers.html"
+//                 window.location.href = 'modifyusers.html';
+//             });
+
+//                 const btnEliminar = row.querySelector('.btn-delete');
+//                 btnEliminar.addEventListener('click', () => {
+//                 const empleadoID = btnEliminar.getAttribute('empId');
+//                 eliminarEmpleado(empleadoID);
+//                 });
+//         }
+//     } else {
+//         const row = document.createElement('tr');
+//         row.innerHTML = `
+//             <td colspan="7">No se encontraron empleados.</td>
+//         `;
+//         tbody.appendChild(row);
+//     }
+
+//     const container = document.querySelector('.table-container');
+//     container.innerHTML = '';
+//     container.appendChild(table);
+// }
+
+// function buscarEmpleadoPorNombre() {
+//     if (!localStorage.getItem("token")) {
+//         alert("Debes iniciar sesión para buscar empleados.");
+//         return;
+//     }
+
+//     const nombreBuscado = localStorage.getItem('nombre');
+
+//     axios.get(link + 'rh/' + nombreBuscado, { headers })
+//         .then(function (res) {
+//             const empleados = res.data;
+//             mostrarEmpleados(empleados);
+//         })
+//         .catch(function (err) {
+//             alert("Intenta de nuevo, hubo un error");
+//             console.log(err);
+//         });
+// }
+
+// document.addEventListener("DOMContentLoaded", function () {
+//     document.getElementById('searchButton').addEventListener('click', buscarEmpleadoPorNombre);
+
+//     function buscarEmpleadoPorNombre() {
+//         if (!localStorage.getItem("token")) {
+//             alert("Debes iniciar sesión para buscar empleados.");
+//             return;
+//         }
+
+//         const nombreBuscado = localStorage.getItem('nombre');
+
+//         axios.get(link + 'rh/' + nombreBuscado, { headers })
+//             .then(function (res) {
+//                 const empleados = res.data;
+//                 mostrarEmpleados(empleados);
+//             })
+//             .catch(function (err) {
+//                 alert("Intenta de nuevo, hubo un error");
+//                 console.log(err);
+//             });
+//     }
+
+// });
+
+function update() {
+    let nombre = document.getElementById('nombre').value;
+    let apellido = document.getElementById('apellido').value;
+    let telefono = document.getElementById('telefono').value;
+    let email = document.getElementById('email').value;
+    let direccion = document.getElementById('direccion').value;
+    const empleadoId = localStorage.getItem('empleado_id');
+    
+    axios.put(link + "rh/" + empleadoId, {
+        nombre: nombre,
+        apellido: apellido,
+        telefono: telefono,
+        email: email,
+        direccion: direccion
+    }, { headers })
+    .then(function(res) {
+        console.log(res);
+        alert("Modificación exitosa");
+        window.location.href = "viewusers.html";
     })
-}
-
-function update(){
-    var nombre = document.getElementById('nombre').value
-    var apellido = document.getElementById('apellido').value
-    var telefono = document.getElementById('telefono').value
-    var correo = document.getElementById('email').value
-    var direccion = document.getElementById('direccion').value
-
-    axios.put('http://localhost:3000/rh', {
-            nombre: nombre,
-            apellido: apellido,
-            telefono: telefono,
-            correo: correo,
-            direccion: direccion
-    }, headers).then(function(res){
-        console.log(res)
-        alert("Modificacion exitosa")
-        window.location.href = "rh.html"
-    }).catch(function(err){
-        console.log(err)
-    })
+    .catch(function(err) {
+        console.log(err);
+        alert("Hubo un error al modificar el empleado.");
+    });
 }

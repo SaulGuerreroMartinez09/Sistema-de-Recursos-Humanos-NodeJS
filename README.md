@@ -30,6 +30,10 @@ A continuación, se describen las instrucciones para ejecutar y utilizar el sist
 
 2. Instala las dependencias del proyecto:
     - npm install
+    - npm install express
+    - npm install morgan
+    - npm install nodemon
+    - npm install jsonwebtoken
 
 3. Configura la base de datos y establece las credenciales de acceso en un archivo de configuración.
 
@@ -38,7 +42,7 @@ A continuación, se describen las instrucciones para ejecutar y utilizar el sist
 
 5. Accede a la aplicación a través de tu navegador web.
 
-6. Inicia sesión con las credenciales de administrador.
+6. Inicia sesión con las credenciales de administrador, las credenciales (token) se generan al ingresar el correo y contraseña de los administradores de la Base de datos "recursos-humanos.sql".
 
 7. Utiliza las funcionalidades del sistema para administrar a los empleados de la empresa.
 
@@ -46,11 +50,9 @@ A continuación, se describen las instrucciones para ejecutar y utilizar el sist
     - Node.js
     - Express.js
     - JSON Web Tokens (JWT)
-    - Base de Datos (debes especificar la base de datos utilizada)
+    - Base de Datos (recursos-humanos.sql)
 
 
-## Licencia
-    Este proyecto se encuentra bajo la Licencia "ISC".
 
 
 

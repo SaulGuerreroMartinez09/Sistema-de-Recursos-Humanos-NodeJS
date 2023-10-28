@@ -12,6 +12,11 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="js/modifyusers.js"></script>
 </head>
+<style>
+    body {
+                background-color: #9e9595; /* Color de fondo en formato hexadecimal */
+    }
+</style>
 <body>
     <div class="container"></div>
         <div class="row mt-5">
@@ -22,6 +27,7 @@
         <div class="row align-items-center">
             <div class="col-6 offset-3">
                 <div class="form-group">
+                    <div class="table-container"></div>
                     <label for="nombre">Nombre:</label>
                     <input type="text" class="form-control" id="nombre" name="nombre" value="" required><br><br>
 
@@ -29,7 +35,7 @@
                     <input type="text" class="form-control" id="apellido" name="apellido" value=""><br><br>
 
                     <label for="email">Email:</label>
-                    <input type="email" class="form-control" id="email" name="email" value="" readonly><br><br>
+                    <input type="email" class="form-control" id="email" name="email" value=""><br><br>
 
                     <label for="telefono">Teléfono:</label>
                     <input type="number" class="form-control" id="telefono" name="telefono" value=""><br><br>
