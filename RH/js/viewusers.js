@@ -78,15 +78,30 @@ function mostrarEmpleados(empleados) {
                 <td>${direccion}</td>
                 <td>
                     <button class="btn btn-delete" empId="${empleado_id}">Eliminar</button>
-                    <button class="btn btn-edit">Editar</button>
+                    <button class="btn btn-edit" nombre="${nombre}">Editar</button>
                 </td>
             `;
             tbody.appendChild(row);
+
+
+            const btnEditar = row.querySelector('.btn-edit');
+            btnEditar.addEventListener('click', () => {
+                const nombrecito = btnEditar.getAttribute('nombre');
+                // Obtener el empleado seleccionado de 'empleados'
+                const empleadoSeleccionado = empleadosData.find(empleado => empleado.nombre === nombrecito);
+                
+                // Almacenar los datos del empleado en el almacenamiento local
+                localStorage.setItem('empleadoSeleccionado', JSON.stringify(empleadoSeleccionado));
+                
+                // Redirigir a "modifyusers.html"
+                window.location.href = 'modifyusers.html';
+            });
+
                 const btnEliminar = row.querySelector('.btn-delete');
                 btnEliminar.addEventListener('click', () => {
                 const empleadoID = btnEliminar.getAttribute('empId');
                 eliminarEmpleado(empleadoID);
-});
+                });
         }
     } else {
         const row = document.createElement('tr');

@@ -68,7 +68,7 @@ recursosH.post("/", async (req, res, next) => {
   
   recursosH.get('/:id([0-9]{1,3})', async (req, res, next) => {
     const id = req.params.id;
-    const empleado = await db.query('SELECT * FROM empleados WHERE empleado_id==' + id);
+    const empleado = await db.query('SELECT * FROM empleados WHERE empleado_id=' + id);
   
     if (empleado.length > 0) {
       return res.status(201).json({ code: 201, message: empleado });
