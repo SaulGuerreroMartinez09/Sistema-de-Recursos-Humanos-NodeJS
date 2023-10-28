@@ -5,6 +5,8 @@ const headers = {
 
 window.onload = init;
 
+// -------------------------------------INICIO-------------------------------------
+
 function init() {
     if (localStorage.getItem("token")) {
         document.querySelector('.btn-secondary').addEventListener('click', function () {
@@ -14,6 +16,9 @@ function init() {
         document.querySelector('.btn-primary').addEventListener('click', verEmpleados);
     }
 }
+
+
+// -------------------------------------VER EMPLEADOS-------------------------------------
 
 function verEmpleados() {
     if (!localStorage.getItem("token")) {
@@ -35,6 +40,8 @@ function verEmpleados() {
             console.log(err);
         });
 }
+
+// -------------------------------------IMPRIMIR EMPLEADOS-------------------------------------
 
 function mostrarEmpleados(empleados) {
     const table = document.createElement('table');
@@ -85,15 +92,12 @@ function mostrarEmpleados(empleados) {
 
 
             const btnEditar = row.querySelector('.btn-edit');
+            const btnDelete = row.querySelector('.bbtn-delete');
             btnEditar.addEventListener('click', () => {
                 const nombrecito = btnEditar.getAttribute('nombre');
-                // Obtener el empleado seleccionado de 'empleados'
                 const empleadoSeleccionado = empleadosData.find(empleado => empleado.nombre === nombrecito);
-                
-                // Almacenar los datos del empleado en el almacenamiento local
                 localStorage.setItem('empleadoSeleccionado', JSON.stringify(empleadoSeleccionado));
-                
-                // Redirigir a "modifyusers.html"
+
                 window.location.href = 'modifyusers.html';
             });
 
@@ -116,7 +120,7 @@ function mostrarEmpleados(empleados) {
     container.appendChild(table);
 }
 
-
+// -------------------------------------ELIMINAR EMPLEADOS-------------------------------------
 
 function eliminarEmpleado(empleadoID) {
     axios.delete(link + 'rh/' + empleadoID, { headers} )
@@ -129,6 +133,7 @@ function eliminarEmpleado(empleadoID) {
         });
 }
 
+// -------------------------------------BUSCAR EMPLEADOS POR NOMBRE-------------------------------------
 
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById('searchButton').addEventListener('click', buscarEmpleadoPorNombre);

@@ -35,7 +35,7 @@ recursosH.post("/", async (req, res, next) => {
     const { nombre, apellido, telefono, correo, direccion } = req.body;
   
     if (nombre && apellido && telefono && correo && direccion) {
-      let query = `UPDATE empleados SET nombre='${nombre}', apellido='${apellido}', telefono='${telefono}', correo='${correo}', direccion='${direccion}' WHERE id=${req.params.id};`;
+      let query = `UPDATE empleados SET nombre='${nombre}', apellido='${apellido}', telefono='${telefono}', correo='${correo}', direccion='${direccion}' WHERE empleado_id=${req.params.id};`;
       const rows = await db.query(query);
   
       if (rows.affectedRows == 1) {
