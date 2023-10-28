@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 28-10-2023 a las 23:44:15
+-- Tiempo de generación: 29-10-2023 a las 01:04:47
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -20,26 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `recursos_humanos`
 --
-
-DELIMITER $$
---
--- Procedimientos
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `eliminar_empleado` (IN `empleado_id` INT)   BEGIN
-    -- Eliminar el empleado
-    DELETE FROM empleados WHERE id = empleado_id;
-
-    -- Obtener el máximo ID existente
-    SET @max_id = (SELECT MAX(id) FROM empleados);
-
-    -- Ajustar el valor del autoincremento
-    SET @sql = CONCAT('ALTER TABLE empleados AUTO_INCREMENT = ', @max_id + 1);
-    PREPARE stmt FROM @sql;
-    EXECUTE stmt;
-    DEALLOCATE PREPARE stmt;
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
