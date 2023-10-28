@@ -30,6 +30,10 @@ A continuación, se describen las instrucciones para ejecutar y utilizar el sist
 
 2. Instala las dependencias del proyecto:
     - npm install
+    - npm install express
+    - npm install morgan
+    - npm install nodemon
+    - npm install jsonwebtoken
 
 3. Configura la base de datos y establece las credenciales de acceso en un archivo de configuración.
 
