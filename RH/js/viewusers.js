@@ -138,6 +138,3 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 });
-
-
-// ...
