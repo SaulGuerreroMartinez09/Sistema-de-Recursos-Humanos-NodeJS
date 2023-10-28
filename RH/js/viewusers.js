@@ -115,38 +115,29 @@ function eliminarEmpleado(empleadoID) {
 }
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    document.getElementById('searchButton').addEventListener('click', buscarEmpleadoPorNombre);
 
-function buscarEmpleadosPorNombre() {
-    const inputNombre = document.getElementById('search');
-    const nombreBuscado = inputNombre.value.trim().toUpperCase();
-    
-    const emp = empleados;
-    
-    if (nombreBuscado === '') {
-        mostrarEmpleados(emp);
-    } else {
-        const empleadosFiltrados = emp.filter(empleado => empleado.nombre.toUpperCase().includes(nombreBuscado));
-        mostrarEmpleados(empleadosFiltrados);
+    function buscarEmpleadoPorNombre() {
+        if (!localStorage.getItem("token")) {
+            alert("Debes iniciar sesión para buscar empleados.");
+            return;
+        }
+
+        const nombreBuscado = document.getElementById('search').value;
+
+        axios.get(link + 'rh/' + nombreBuscado, { headers })
+            .then(function (res) {
+                const empleados = res.data;
+                mostrarEmpleados(empleados);
+            })
+            .catch(function (err) {
+                alert("Intenta de nuevo, hubo un error");
+                console.log(err);
+            });
     }
-}
 
-const inputNombre = document.getElementById('search');
-inputNombre.addEventListener('input', buscarEmpleadosPorNombre);
+});
 
 
-// function eliminarEmpleado(empleadoID) {
-
-//     axios.delete(link + 'rh/' + empleadoID, { headers} )
-//         .then(function (res) {
-//             if(code==200){
-//                 alert("Empleado borrado")
-//             }
-//             else{
-//                 alert("empleado no encontrado!") 
-//             }
-        
-//         })
-//         .catch(function (err) {
-//             console.log("Error al eliminar el empleado:", err);
-//         });
-// }
+// ...
