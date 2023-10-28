@@ -42,7 +42,7 @@ A continuación, se describen las instrucciones para ejecutar y utilizar el sist
 
 5. Accede a la aplicación a través de tu navegador web.
 
-6. Inicia sesión con las credenciales de administrador.
+6. Inicia sesión con las credenciales de administrador, las credenciales (token) se generan al ingresar el correo y contraseña de los administradores de la Base de datos "recursos-humanos.sql".
 
 7. Utiliza las funcionalidades del sistema para administrar a los empleados de la empresa.
 
