@@ -50,11 +50,9 @@ A continuación, se describen las instrucciones para ejecutar y utilizar el sist
     - Node.js
     - Express.js
     - JSON Web Tokens (JWT)
-    - Base de Datos (debes especificar la base de datos utilizada)
+    - Base de Datos (recursos-humanos.sql)
 
 
-## Licencia
-    Este proyecto se encuentra bajo la Licencia "ISC".
 
 
 
