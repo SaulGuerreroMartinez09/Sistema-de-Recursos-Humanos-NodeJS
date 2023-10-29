@@ -14,9 +14,7 @@ Para llevar a cabo este proyecto, se han definido los siguientes requerimientos:
 
 3. **Autenticación por JWT**: La autenticación se realiza mediante JSON Web Tokens (JWT) para garantizar la seguridad y autorización de los usuarios.
 
-4. **Acceso Controlado**: El sistema asegura que solo los usuarios autenticados(Administradores) tengan acceso a la información.
-
-5. **Usuarios Administradores**: Los usuarios registrados directamente en la base de datos se consideran administradores del sistema. Los administradores tienen la capacidad de realizar las siguientes acciones:
+4. **Usuarios Administradores**: Los usuarios registrados directamente en la base de datos se consideran administradores del sistema. Los administradores tienen la capacidad de realizar las siguientes acciones:
 
    - Agregar nuevos empleados a la base de datos.
    - Modificar los datos de los empleados existentes.
