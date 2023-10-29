@@ -8,13 +8,16 @@ window.onload = init;
 // -------------------------------------INICIO-------------------------------------
 
 function init() {
-    if (localStorage.getItem("token")) {
+    if (localStorage.getItem("token") && localStorage.getItem("mail")) {
         document.querySelector('.btn-secondary').addEventListener('click', function () {
             window.location.href = 'rh.html';
         });
 
         document.querySelector('.btn-primary').addEventListener('click', verEmpleados);
-    }
+    }else{
+        alert("Necesitas iniciar sesion para estar en esta pagina");
+        window.location.href = 'index.html'
+    } 
 }
 
 

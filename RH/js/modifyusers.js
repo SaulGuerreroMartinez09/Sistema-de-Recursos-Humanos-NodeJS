@@ -2,9 +2,17 @@ const link = 'http://localhost:3000/';
 const headers = {
             'Authorization': 'bearer ' + localStorage.getItem("token")
         };
-window.onload = function() {
-    alert("Para editar solo selecciona cualquier casilla de 'valores'")
+// -------------------------------------VERIFICACION-------------------------------------
+window.onload = init;
+function init() {
+    if (!localStorage.getItem("token") && localStorage.getItem("mail")) {
+        alert("Necesitas iniciar sesion para estar en esta pagina");
+        window.location.href = 'index.html'
+    }else{
+        alert("Para editar solo selecciona cualquier casilla de 'valores'")
+    }
 }
+
 // -------------------------------------MOSTRAR EMPLEADO SELECCIONADO-------------------------------------
         window.addEventListener("load", function () {
             let empleadoStringify = localStorage.getItem('empleadoSeleccionado');

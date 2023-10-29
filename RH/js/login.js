@@ -7,7 +7,6 @@ function init() {
 function login() {
     const mail = document.getElementById('input-mail').value;
     const pass = document.getElementById('input-password').value;
-
     if (!mail || !pass) {
         alert("Completa ambos campos.");
         return;
@@ -24,6 +23,7 @@ function login() {
     const token = res.data.message;
         if (res.data.code === 201) {
             localStorage.setItem("token", token);
+            localStorage.setItem('mail', JSON.stringify(mail));
             window.location.href = "rh.html";
     }
     if (token === "Usuario y/o contraseña incorrectos") {
@@ -37,4 +37,5 @@ function login() {
         console.log(err);
         alert("Error al procesar la solicitud.");
     });
+
 }
