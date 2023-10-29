@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2023 a las 01:04:47
+-- Tiempo de generación: 29-10-2023 a las 21:10:01
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -283,37 +283,6 @@ INSERT INTO `empleados` (`empleado_id`, `nombre`, `apellido`, `telefono`, `corre
 (318, 'Elena', 'Luna', '8715780101', 'elena.luna@yahoo.com', 'Colonia Centro, Torreón, 27900 Torreón, Coah.'),
 (319, 'Ricardo', 'Soto', '6185891212', 'ricardo.soto@yahoo.com', 'Colonia Centro, Durango, 34560 Durango, Dgo.'),
 (320, 'Karla', 'Martínez', '9996012323', 'karla.martinez@hotmail.com', 'Colonia Centro, Mérida, 97650 Mérida, Yuc.');
-
---
--- Índices para tablas volcadas
---
---
--- Indices de la tabla `administradores`
---
-ALTER TABLE `administradores`
-  ADD PRIMARY KEY (`Id`);
-
---
--- Indices de la tabla `empleados`
---
-ALTER TABLE `empleados`
-  ADD PRIMARY KEY (`empleado_id`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `administradores`
---
-ALTER TABLE `administradores`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `empleados`
---
-ALTER TABLE `empleados`
-  MODIFY `empleado_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=321;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
