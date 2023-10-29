@@ -287,7 +287,6 @@ INSERT INTO `empleados` (`empleado_id`, `nombre`, `apellido`, `telefono`, `corre
 --
 -- Índices para tablas volcadas
 --
-
 --
 -- Indices de la tabla `administradores`
 --
