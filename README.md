@@ -44,14 +44,14 @@ A continuación, se describen las instrucciones para ejecutar y utilizar el sist
 
 6. Inicia sesión con las credenciales de administrador. Las credenciales (token) se generan al ingresar el correo y contraseña de los administradores de la base de datos "recursos-humanos.sql".
 
-DATOS DE ADMINISTRADORES
-   José Saul Guerrero:
-      Correo: saul@gmail.com
-      Contraseña: 12345
-   
-   Martin Zamora:
-      Correo: martin@gmail.com
-      Contraseña: 12345
+         DATOS DE ADMINISTRADORES
+            José Saul Guerrero:
+               Correo: saul@gmail.com
+               Contraseña: 12345
+            
+            Martin Zamora:
+               Correo: martin@gmail.com
+               Contraseña: 12345
 
 
 
