@@ -43,6 +43,18 @@ A continuación, se describen las instrucciones para ejecutar y utilizar el sist
 5. Accede a la aplicación a través de tu navegador web.
 
 6. Inicia sesión con las credenciales de administrador, las credenciales (token) se generan al ingresar el correo y contraseña de los administradores de la Base de datos "recursos-humanos.sql".
+      -----------------------------------------------------
+      ##DATOSADMINISTRADORES
+      -Una vez instalada la base de datos, es de saber que para poder iniciar sesion es solamente con estos dos aministradores
+      -----------------------------------------------------
+            Jose Saul Guerrero:
+               -Correo: saul@gmail.com
+               -Contraseña: 12345
+               
+            Martin Zamora:
+               -Correo:martin@gmail.com
+               -Contraseña: 12345
+      -----------------------------------------------------
 
 7. Utiliza las funcionalidades del sistema para administrar a los empleados de la empresa.
 
@@ -51,6 +63,10 @@ A continuación, se describen las instrucciones para ejecutar y utilizar el sist
     - Express.js
     - JSON Web Tokens (JWT)
     - Base de Datos (recursos-humanos.sql)
+
+
+
+
 
 
 
